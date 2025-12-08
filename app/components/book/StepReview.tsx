@@ -51,7 +51,7 @@ export default function StepReview({ data, onBack, onAccept }: Props) {
         </button>
 
         <button
-          onClick={onAccept} // ← FIXED
+          onClick={onAccept} // ✔ THIS MUST BE onAccept
           className="px-6 py-2 rounded-lg bg-emerald-400 text-white font-semibold"
         >
           Confirm & Submit
