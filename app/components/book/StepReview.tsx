@@ -4,10 +4,11 @@ import { BookingData } from "@/types";
 type Props = {
   data: BookingData;
   onBack: () => void;
-  onConfirm: () => void;
+  onAccept: () => void;  // ✅ Add this line
 };
 
-export default function StepReview({ data, onBack, onConfirm }: Props) {
+
+export default function StepReview({ data, onBack, onAccept }: Props) {
   return (
     <div>
       <h2 className="text-xl font-bold text-emerald-900 mb-2">Review your booking</h2>
