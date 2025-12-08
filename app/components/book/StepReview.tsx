@@ -4,9 +4,8 @@ import { BookingData } from "@/types";
 type Props = {
   data: BookingData;
   onBack: () => void;
-  onAccept: () => void;  // ✅ Add this line
+  onAccept: () => void;  // this is correct
 };
-
 
 export default function StepReview({ data, onBack, onAccept }: Props) {
   return (
@@ -28,15 +27,33 @@ export default function StepReview({ data, onBack, onAccept }: Props) {
 
         <div className="p-3 rounded-lg border bg-white">
           <div className="text-sm text-slate-600">Contact</div>
-          <div className="text-lg text-slate-800">{data.firstName} {data.lastName}</div>
-          <div className="text-sm text-slate-600">{data.phone} • {data.email}</div>
-          <div className="text-sm text-slate-600 mt-1">{data.address} {data.city} {data.zip}</div>
+          <div className="text-lg text-slate-800">
+            {data.firstName} {data.lastName}
+          </div>
+          <div className="text-sm text-slate-600">
+            {data.phone} • {data.email}
+          </div>
+          <div className="text-sm text-slate-600 mt-1">
+            {data.address} {data.city} {data.zip}
+          </div>
         </div>
       </div>
 
       <div className="mt-6 flex justify-between">
-        <button onClick={onBack} className="px-4 py-2 rounded-lg border">Back</button>
-        <button onClick={onConfirm} className="px-6 py-2 rounded-lg bg-emerald-400 text-white font-semibold">Confirm & Submit</button>
+        <button
+          onClick={onBack}
+          className="px-4 py-2 rounded-lg border"
+        >
+          Back
+        </button>
+
+        {/* FIXED: changed onConfirm → onAccept */}
+        <button
+          onClick={onAccept}
+          className="px-6 py-2 rounded-lg bg-emerald-400 text-white font-semibold"
+        >
+          Confirm & Submit
+        </button>
       </div>
     </div>
   );
