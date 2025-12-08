@@ -5,12 +5,13 @@ import StepIssue from "../components/book/StepIssue";
 import StepContact from "../components/book/StepContact";
 import StepReview from "../components/book/StepReview";
 import StepWaiting from "../components/book/StepWaiting";
-import Stepper from "../components/book/Stepper"; 
+import Stepper from "../components/book/Stepper";
 
 import { BookingData } from "@/types";
 
 export default function BookPage() {
   const [step, setStep] = useState<number>(0);
+
   const [data, setData] = useState<BookingData>({
     device: null,
     issue: "",
@@ -23,6 +24,11 @@ export default function BookPage() {
     zip: "",
     address: "",
   });
+
+  // Safe update function for all steps
+  const updateData = (patch: Partial<BookingData>) => {
+    setData((prev) => ({ ...prev, ...patch }));
+  };
 
   const steps = [
     "Choose Device",
@@ -48,18 +54,13 @@ export default function BookPage() {
 
         <div className="mt-8 bg-white rounded-2xl shadow p-6">
           {step === 0 && (
-            <StepDevice
-              data={data}
-              onChange={(patch) => setData({ ...data, ...patch })}
-              onNext={next}
-            />
+            <StepDevice data={data} onChange={updateData} onNext={next} />
           )}
 
           {step === 1 && (
             <StepIssue
               data={data}
-             onChange={(patch: Partial<typeof data>) => setData({ ...data, ...patch })}
-
+              onChange={updateData}
               onNext={next}
               onBack={prev}
             />
@@ -68,28 +69,20 @@ export default function BookPage() {
           {step === 2 && (
             <StepContact
               data={data}
-              onChange={(patch) => setData({ ...data, ...patch })}
+              onChange={updateData}
               onNext={next}
               onBack={prev}
             />
           )}
 
           {step === 3 && (
-            <StepReview  
-              data={data}
-              onBack={prev}
-              onAccept={() => {
-                // Accept -> show waiting
-                next();
-              }}
-            />
+            <StepReview data={data} onBack={prev} onAccept={next} />
           )}
 
           {step === 4 && (
             <StepWaiting
               data={data}
               onDone={() => {
-                // Reset demo
                 alert("Booking submitted (demo).");
                 setStep(0);
                 setData({
@@ -112,5 +105,3 @@ export default function BookPage() {
     </main>
   );
 }
-
-
