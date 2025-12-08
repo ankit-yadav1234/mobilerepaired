@@ -58,7 +58,8 @@ export default function BookPage() {
           {step === 1 && (
             <StepIssue
               data={data}
-              onChange={(patch) => setData({ ...data, ...patch })}
+             onChange={(patch: Partial<typeof data>) => setData({ ...data, ...patch })}
+
               onNext={next}
               onBack={prev}
             />
