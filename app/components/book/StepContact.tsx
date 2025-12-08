@@ -9,6 +9,7 @@ type Props = {
 };
 
 export default function StepContact({ data, onChange, onNext, onBack }: Props) {
+  // Required fields for enabling continue
   const valid = data.firstName && data.phone && data.city;
 
   return (
@@ -25,13 +26,15 @@ export default function StepContact({ data, onChange, onNext, onBack }: Props) {
       {/* Inputs */}
       <div className="mt-10 space-y-4">
 
+        {/* PHONE NUMBER */}
         <input
-          value={data.issue}
-          onChange={(e) => onChange({ issue: e.target.value })}
-          placeholder="Mobile Model"
+          value={data.phone}
+          onChange={(e) => onChange({ phone: e.target.value })}
+          placeholder="Phone Number"
           className="w-72 px-5 py-3 bg-white rounded-lg border-[1.6px] border-zinc-200 text-sm text-slate-500 font-medium font-[Poppins]"
         />
 
+        {/* FIRST NAME */}
         <input
           value={data.firstName}
           onChange={(e) => onChange({ firstName: e.target.value })}
@@ -39,6 +42,7 @@ export default function StepContact({ data, onChange, onNext, onBack }: Props) {
           className="w-72 px-5 py-3 bg-white rounded-lg border-[1.6px] border-zinc-200 text-sm text-slate-500 font-medium font-[Poppins]"
         />
 
+        {/* LAST NAME */}
         <input
           value={data.lastName}
           onChange={(e) => onChange({ lastName: e.target.value })}
@@ -46,6 +50,7 @@ export default function StepContact({ data, onChange, onNext, onBack }: Props) {
           className="w-72 px-5 py-3 bg-white rounded-lg border-[1.6px] border-zinc-200 text-sm text-slate-500 font-medium font-[Poppins]"
         />
 
+        {/* CITY */}
         <input
           value={data.city}
           onChange={(e) => onChange({ city: e.target.value })}
@@ -53,6 +58,7 @@ export default function StepContact({ data, onChange, onNext, onBack }: Props) {
           className="w-72 px-5 py-3 bg-white rounded-lg border-[1.6px] border-zinc-200 text-sm text-slate-500 font-medium font-[Poppins]"
         />
 
+        {/* ZIP */}
         <input
           value={data.zip}
           onChange={(e) => onChange({ zip: e.target.value })}
@@ -60,16 +66,16 @@ export default function StepContact({ data, onChange, onNext, onBack }: Props) {
           className="w-72 px-5 py-3 bg-white rounded-lg border-[1.6px] border-zinc-200 text-sm text-slate-500 font-medium font-[Poppins]"
         />
 
+        {/* ADDRESS */}
         <input
           value={data.address}
           onChange={(e) => onChange({ address: e.target.value })}
           placeholder="Street Address"
           className="w-[610px] px-5 py-3 bg-white rounded-lg border-[1.6px] border-zinc-200 text-sm text-slate-500 font-medium font-[Poppins]"
         />
-
       </div>
 
-      {/* Bottom Buttons + Border */}
+      {/* Buttons */}
       <div className="mt-12 border-t border-slate-400 pt-6 flex justify-between">
 
         {/* Back */}
@@ -84,12 +90,14 @@ export default function StepContact({ data, onChange, onNext, onBack }: Props) {
         <button
           onClick={onNext}
           disabled={!valid}
-          className={`w-64 h-14 rounded-3xl text-white text-2xl font-[Poppins] shadow-[0_0_20px_-6px_rgba(0,0,0,0.25)]
-            ${valid ? "bg-neutral-600" : "bg-neutral-400 cursor-not-allowed"}`}
+          className={`
+            w-64 h-14 rounded-3xl text-white text-2xl font-[Poppins]
+            shadow-[0_0_20px_-6px_rgba(0,0,0,0.25)]
+            ${valid ? "bg-neutral-600" : "bg-neutral-400 cursor-not-allowed"}
+          `}
         >
           Continue
         </button>
-
       </div>
     </div>
   );

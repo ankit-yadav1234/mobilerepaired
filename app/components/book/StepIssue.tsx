@@ -1,3 +1,13 @@
+import React from "react";
+import { BookingData } from "@/types";
+
+type Props = {
+  data: BookingData;
+  onChange: (patch: Partial<BookingData>) => void;
+  onNext: () => void;
+  onBack: () => void;
+};
+
 const issuesLeft = [
   { id: "battery", name: "Battery" },
   { id: "screen", name: "Broken Screen" },
@@ -30,7 +40,11 @@ export default function StepIssue({ data, onChange, onNext, onBack }: Props) {
                   flex flex-col items-center justify-center
                   shadow-[0_0_30px_rgba(0,0,0,0.15)]
                   transition-all duration-200
-                  ${active ? "scale-105 shadow-[0_0_45px_rgba(0,0,0,0.25)]" : "hover:scale-105"}
+                  ${
+                    active
+                      ? "scale-105 shadow-[0_0_45px_rgba(0,0,0,0.25)]"
+                      : "hover:scale-105"
+                  }
                 `}
               >
                 <div className="w-[85px] h-[85px] bg-[#bdeeff] rounded-xl mb-5" />
@@ -53,7 +67,11 @@ export default function StepIssue({ data, onChange, onNext, onBack }: Props) {
                 className={`
                   w-[220px] py-4 rounded-[30px] text-[20px]
                   bg-white shadow-[0_0_22px_rgba(0,0,0,0.15)]
-                  ${active ? "scale-105 border border-[#6aa8ff]" : "hover:scale-105"}
+                  ${
+                    active
+                      ? "scale-105 border border-[#6aa8ff]"
+                      : "hover:scale-105"
+                  }
                 `}
               >
                 {i}
@@ -89,9 +107,11 @@ export default function StepIssue({ data, onChange, onNext, onBack }: Props) {
           disabled={!data.issue}
           className={`
             px-14 py-4 rounded-[30px] text-[20px]
-            ${data.issue
-              ? "bg-[#4b4b4b] text-white"
-              : "bg-gray-300 text-gray-500 cursor-not-allowed"}
+            ${
+              data.issue
+                ? "bg-[#4b4b4b] text-white"
+                : "bg-gray-300 text-gray-500 cursor-not-allowed"
+            }
           `}
         >
           Continue

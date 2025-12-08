@@ -65,8 +65,7 @@ export default function StepDevice({ data, onChange, onNext }: Props) {
             px-12 py-4 rounded-[30px] text-[20px] font-medium
             ${data.device
               ? "bg-[#3a3a3a] text-white shadow-[0_4px_14px_rgba(0,0,0,0.25)]"
-              : "bg-gray-300 text-gray-500 cursor-not-allowed"
-            }
+              : "bg-gray-300 text-gray-500 cursor-not-allowed"}
           `}
         >
           Continue
