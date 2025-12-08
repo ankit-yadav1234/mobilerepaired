@@ -6,7 +6,8 @@ import { usePathname } from "next/navigation";
 export default function Header() {
   const pathname = usePathname();
 
-  const linkClass = (path) =>
+  // ✔ Added type: (path: string)
+  const linkClass = (path: string) =>
     pathname === path
       ? "text-green-600 font-medium"
       : "text-neutral-700 hover:text-green-600 transition";
@@ -14,7 +15,6 @@ export default function Header() {
   return (
     <header className="w-full fixed top-0 left-0 z-40 bg-neutral-50/80 backdrop-blur-sm border-b border-neutral-200">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
-
         {/* Logo */}
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 rounded-full bg-gradient-to-br from-pink-500 to-orange-400" />
@@ -26,10 +26,18 @@ export default function Header() {
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex items-center gap-8 text-sm">
-          <Link href="/" className={linkClass("/")}>Home</Link>
-          <Link href="/about" className={linkClass("/about")}>About</Link>
-          <Link href="/contact" className={linkClass("/contact")}>Contact</Link>
-          <Link href="/faq" className={linkClass("/faq")}>FAQs</Link>
+          <Link href="/" className={linkClass("/")}>
+            Home
+          </Link>
+          <Link href="/about" className={linkClass("/about")}>
+            About
+          </Link>
+          <Link href="/contact" className={linkClass("/contact")}>
+            Contact
+          </Link>
+          <Link href="/faq" className={linkClass("/faq")}>
+            FAQs
+          </Link>
         </nav>
 
         {/* Button */}
@@ -41,10 +49,16 @@ export default function Header() {
             Book a Repair
           </Link>
 
-          <button className="md:hidden" aria-label="Open menu">☰</button>
+          {/* Mobile menu button */}
+          <button
+            className="md:hidden"
+            aria-label="Open menu"
+            onClick={() => console.log("Menu opened")}
+          >
+            ☰
+          </button>
         </div>
       </div>
     </header>
   );
 }
-
