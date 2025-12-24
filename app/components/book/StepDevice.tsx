@@ -2,10 +2,10 @@ import Image from "next/image";
 import { BookingData } from "@/types";
 
 const devices = [
-  { id: "iphone", name: "iPhone", img: "/devices/iphone.svg" },
-  { id: "ipad", name: "iPad", img: "/devices/ipad.svg" },
-  { id: "android", name: "Android", img: "/devices/android.svg" },
-  { id: "tablet", name: "Tablet", img: "/devices/tablet.svg" },
+  { id: "iphone", name: "iPhone", img: "/iphone.svg" },
+  { id: "ipad", name: "iPad", img: "/Ipad.svg" },
+  { id: "android", name: "Android", img: "/android.svg" },
+  { id: "tablet", name: "Tablet", img: "/tablet.svg" },
 ];
 
 type Props = {

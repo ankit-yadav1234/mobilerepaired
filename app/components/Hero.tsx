@@ -26,7 +26,7 @@ export default function Hero() {
       {/* Right Image Section */}
       <div className="w-full h-96 rounded-3xl bg-white shadow-[2px_4px_30px_-10px_rgba(0,0,0,0.25)] overflow-hidden relative">
         <Image
-          src="/repair2.svg"
+          src="/GOPROTO.jpg"
           alt="Device Repair"
           fill
           style={{ objectFit: "cover" }}

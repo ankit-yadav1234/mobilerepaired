@@ -9,7 +9,7 @@ const DATA = [
   {
     title: "iPad",
     desc: "Cracked screens, battery problems, and software issues.",
-    img: "ipad.svg",
+    img: "Ipad.svg",
   },
   {
     title: "Android",
