@@ -38,7 +38,7 @@ export default function StepReview({ data, onBack, onAccept }: Props) {
           <div className="p-6 rounded-3xl bg-white border-2 border-neutral-50 shadow-sm shadow-black/5">
             <div className="text-xs font-bold text-neutral-400 uppercase tracking-widest mb-2">Additional Details</div>
             <p className="text-neutral-700 font-medium leading-relaxed italic">
-              "{data.details}"
+              &quot;{data.details}&quot;
             </p>
           </div>
         )}

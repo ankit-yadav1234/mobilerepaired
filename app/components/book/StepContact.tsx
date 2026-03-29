@@ -20,7 +20,7 @@ export default function StepContact({ data, onChange, onNext, onBack }: Props) {
           Enter your information below
         </h2>
         <p className="text-lg text-neutral-500 font-medium leading-relaxed">
-          We'll get your device back to you in no time, and at the best price.
+          We&apos;ll get your device back to you in no time, and at the best price.
         </p>
       </div>
 

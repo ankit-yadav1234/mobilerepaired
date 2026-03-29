@@ -21,10 +21,10 @@ export default function StepIssue({ data, onChange, onNext, onBack }: Props) {
     <div className="flex flex-col items-center">
       <div className="max-w-xl mx-auto text-center mb-10">
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-neutral-900 tracking-tight leading-tight mb-4">
-          What's wrong with it?
+          What&apos;s wrong with it?
         </h2>
         <p className="text-lg text-neutral-500 font-medium">
-          Select the main issue or describe it below. Don’t worry, we will fix it!
+          Select the main issue or describe it below. Don&apos;t worry, we will fix it!
         </p>
       </div>
 

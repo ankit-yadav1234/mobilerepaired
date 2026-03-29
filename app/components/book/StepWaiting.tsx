@@ -7,7 +7,7 @@ interface Props {
   onDone: () => void;
 }
 
-export default function StepWaiting({ data, onDone }: Props) {
+export default function StepWaiting({ onDone }: { onDone: () => void }) {
   return (
     <div className="w-full flex flex-col items-center justify-center py-10">
       <div className="relative w-full max-w-sm aspect-square bg-white rounded-[3rem] shadow-2xl shadow-emerald-100 border border-neutral-50 flex flex-col items-center justify-center p-10 text-center">
@@ -26,7 +26,7 @@ export default function StepWaiting({ data, onDone }: Props) {
         </h2>
 
         <p className="text-lg text-neutral-500 font-medium leading-relaxed max-w-[280px]">
-          Our technicians are reviewing your request. We'll respond shortly!
+          Our technicians are reviewing your request. We&apos;ll respond shortly!
         </p>
 
         <button
