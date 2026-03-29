@@ -4,9 +4,6 @@ import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-import { title } from "process";
-
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -29,13 +26,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="min-h-screen flex flex-col bg-white">
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-white overflow-x-hidden`}>
         <Header />
-        <main className="flex-1 container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <main className="flex-1 w-full">
           {children}
         </main>
         <Footer />
-   
       </body>
     </html>
   );

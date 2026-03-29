@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { BookingData } from "@/types";
 
@@ -17,87 +18,84 @@ const issuesRight = ["Charging Port", "Camera Lens", "Free Diagnostic"];
 
 export default function StepIssue({ data, onChange, onNext, onBack }: Props) {
   return (
-    <div className="text-center">
-      <h2 className="text-[38px] font-bold text-[#2b2b2b] mb-2">
-        What's wrong with it?
-      </h2>
+    <div className="flex flex-col items-center">
+      <div className="max-w-xl mx-auto text-center mb-10">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-neutral-900 tracking-tight leading-tight mb-4">
+          What's wrong with it?
+        </h2>
+        <p className="text-lg text-neutral-500 font-medium">
+          Select the main issue or describe it below. Don’t worry, we will fix it!
+        </p>
+      </div>
 
-      <p className="text-[18px] text-[#8794b5] mb-12">
-        Don’t worry, we will fix it!
-      </p>
+      <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+        {/* Selection Area */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-1 gap-4">
+            {issuesLeft.map((i) => {
+              const active = data.issue === i.name;
+              return (
+                <button
+                  key={i.id}
+                  onClick={() => onChange({ issue: i.name })}
+                  className={`
+                    p-6 bg-white rounded-3xl border-2 transition-all duration-300
+                    flex flex-col items-center justify-center gap-4 min-h-[140px]
+                    ${active 
+                      ? "border-emerald-500 bg-emerald-50/10 shadow-lg shadow-emerald-50 scale-[1.02]" 
+                      : "border-neutral-50 hover:border-emerald-100 hover:bg-neutral-50"}
+                  `}
+                >
+                  <div className={`w-12 h-12 rounded-xl transition-colors ${active ? "bg-emerald-200" : "bg-emerald-100"}`} />
+                  <span className={`text-lg font-bold transition-colors ${active ? "text-emerald-700" : "text-neutral-700"}`}>
+                    {i.name}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
 
-      <div className="flex flex-col md:flex-row gap-6 justify-center">
-        {/* Left big cards */}
-        <div className="grid grid-cols-2 gap-6">
-          {issuesLeft.map((i) => {
-            const active = data.issue === i.name;
-            return (
-              <button
-                key={i.id}
-                onClick={() => onChange({ issue: i.name })}
-                className={`
-                  w-[230px] h-[200px] bg-white rounded-[35px]
-                  flex flex-col items-center justify-center
-                  shadow-[0_0_30px_rgba(0,0,0,0.15)]
-                  transition-all duration-200
-                  ${
-                    active
-                      ? "scale-105 shadow-[0_0_45px_rgba(0,0,0,0.25)]"
-                      : "hover:scale-105"
-                  }
-                `}
-              >
-                <div className="w-[85px] h-[85px] bg-[#bdeeff] rounded-xl mb-5" />
-                <span className="text-[22px] font-semibold text-[#2c3443]">
-                  {i.name}
-                </span>
-              </button>
-            );
-          })}
+          <div className="flex flex-col gap-3">
+            {issuesRight.map((i) => {
+              const active = data.issue === i;
+              return (
+                <button
+                  key={i}
+                  onClick={() => onChange({ issue: i })}
+                  className={`
+                    py-4 px-6 rounded-2xl text-base font-bold text-left transition-all border-2
+                    ${active
+                      ? "border-emerald-500 bg-emerald-50/10 text-emerald-700 shadow-lg shadow-emerald-50"
+                      : "border-neutral-50 bg-neutral-50/50 text-neutral-600 hover:border-emerald-100 hover:bg-neutral-50"}
+                  `}
+                >
+                  {i}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
-        {/* Right small options */}
-        <div className="flex flex-col gap-4">
-          {issuesRight.map((i) => {
-            const active = data.issue === i;
-            return (
-              <button
-                key={i}
-                onClick={() => onChange({ issue: i })}
-                className={`
-                  w-[220px] py-4 rounded-[30px] text-[20px]
-                  bg-white shadow-[0_0_22px_rgba(0,0,0,0.15)]
-                  ${
-                    active
-                      ? "scale-105 border border-[#6aa8ff]"
-                      : "hover:scale-105"
-                  }
-                `}
-              >
-                {i}
-              </button>
-            );
-          })}
+        {/* Textarea Area */}
+        <div className="flex flex-col h-full">
+          <textarea
+            value={data.details}
+            onChange={(e) => onChange({ details: e.target.value })}
+            placeholder="Describe other issues or provide more details here..."
+            className="
+              w-full p-6 text-base rounded-3xl bg-neutral-50 border-2 border-transparent
+              focus:border-emerald-500 focus:bg-white focus:outline-none transition-all
+              min-h-[200px] lg:min-h-full resize-none font-medium text-neutral-700
+            "
+          />
         </div>
       </div>
 
-      {/* Textarea */}
-      <textarea
-        value={data.details}
-        onChange={(e) => onChange({ details: e.target.value })}
-        placeholder="describe other issues"
-        className="
-          w-full mt-8 p-5 text-[18px] rounded-[35px] 
-          bg-white shadow-[0_0_30px_rgba(0,0,0,0.15)]
-          outline-none resize-none h-[160px]
-        "
-      />
-
-      {/* Buttons */}
-      <div className="mt-10 flex justify-between px-10">
+      {/* Navigation */}
+      <div className="mt-12 flex flex-col sm:flex-row items-center gap-4 w-full max-w-2xl">
         <button
           onClick={onBack}
-          className="px-14 py-4 rounded-[30px] bg-[#4b4b4b] text-white text-[20px]"
+          className="w-full sm:w-1/3 py-4 rounded-2xl bg-neutral-100 text-neutral-600 font-bold hover:bg-neutral-200 transition-colors"
         >
           Go back
         </button>
@@ -106,12 +104,10 @@ export default function StepIssue({ data, onChange, onNext, onBack }: Props) {
           onClick={onNext}
           disabled={!data.issue}
           className={`
-            px-14 py-4 rounded-[30px] text-[20px]
-            ${
-              data.issue
-                ? "bg-[#4b4b4b] text-white"
-                : "bg-gray-300 text-gray-500 cursor-not-allowed"
-            }
+            w-full sm:w-2/3 py-5 rounded-2xl text-lg font-bold transition-all
+            ${data.issue
+              ? "bg-emerald-500 text-white shadow-xl shadow-emerald-100 hover:bg-emerald-600 active:scale-95"
+              : "bg-neutral-100 text-neutral-400 cursor-not-allowed"}
           `}
         >
           Continue

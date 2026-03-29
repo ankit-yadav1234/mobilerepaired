@@ -9,33 +9,36 @@ interface Props {
 
 export default function StepWaiting({ data, onDone }: Props) {
   return (
-    <div className="w-full flex justify-center">
-      <div className="w-[500px] h-[500px] bg-white rounded-lg shadow-[2px_4px_30px_-10px_rgba(0,0,0,0.25)] border border-slate-300 flex flex-col items-center justify-center">
-        {/* Loading Circle Animation */}
-        <div className="mb-8">
-          <div className="relative w-32 h-32 flex items-center justify-center">
-            <span className="absolute w-32 h-32 rounded-full bg-emerald-200 animate-ping"></span>
-            <span className="absolute w-20 h-20 rounded-full bg-emerald-300"></span>
+    <div className="w-full flex flex-col items-center justify-center py-10">
+      <div className="relative w-full max-w-sm aspect-square bg-white rounded-[3rem] shadow-2xl shadow-emerald-100 border border-neutral-50 flex flex-col items-center justify-center p-10 text-center">
+        {/* Animated Loading Indicator */}
+        <div className="relative mb-12">
+          <div className="w-32 h-32 rounded-full border-8 border-neutral-50 border-t-emerald-500 animate-spin" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <svg className="w-12 h-12 text-emerald-500 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
           </div>
         </div>
 
-        {/* Title */}
-        <h2 className="text-neutral-600 text-xl font-normal mb-2">
+        <h2 className="text-3xl font-extrabold text-neutral-800 tracking-tight mb-4">
           Please Wait
         </h2>
 
-        {/* Subtitle */}
-        <p className="text-slate-400 text-sm text-center px-4">
-          Our Technicians will respond to your request soon.
+        <p className="text-lg text-neutral-500 font-medium leading-relaxed max-w-[280px]">
+          Our technicians are reviewing your request. We'll respond shortly!
         </p>
 
-        {/* Continue Button */}
         <button
           onClick={onDone}
-          className="mt-8 px-6 py-2 bg-emerald-500 text-white rounded-md hover:bg-emerald-600 transition"
+          className="mt-12 w-full py-5 bg-emerald-500 text-white rounded-2xl font-bold text-lg shadow-xl shadow-emerald-200 hover:bg-emerald-600 active:scale-95 transition-all"
         >
-          Continue
+          Return Home
         </button>
+
+        {/* Floating decoration */}
+        <div className="absolute -top-4 -right-4 w-12 h-12 bg-emerald-50 rounded-2xl rotate-12 -z-10" />
+        <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-emerald-50 rounded-full -z-10" />
       </div>
     </div>
   );
